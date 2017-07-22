@@ -1,0 +1,39 @@
+print ("Hello")
+name1 = raw_input("Enter the first name:")     #Input for first name
+name2 = raw_input("Enter the second name:")    #Input for second name
+print ("Name1= "+name1)
+print ("Name2= "+name2)
+counter=0
+for i in range(len(name1)):         #Iterating over letters of name
+  for j in range(len(name2)):
+    if name1[i]==name2[j]:          #Comparing each letter of the first name with second name   
+      list1 = list(name1)           #Replacing matched characters with * in first name and ! in second name
+      list1[i]='*'
+      name1=''.join(list1)
+      list2 = list(name2)
+      list2[j]='!'
+      name2=''.join(list2)
+      counter=counter+1             #Counter for matched characters
+      break                         #break is used to prevent multiple cancellations
+print (name1)
+print (name2)
+print (counter)
+counter=counter*2
+sum=len(name1)+len(name2)
+unmatchedLetters=sum-counter        #Finding total number of unmatched letters
+print (unmatchedLetters)              
+
+
+
+word=['F','L','A','M','E','S']        
+
+
+while len(word)>1:                                  #Iterate till only 1 letter is left
+        remove=unmatchedLetters                       
+        if unmatchedLetters>len(word):
+            remove=unmatchedLetters % len(word)     #To get the value of index even if it is more than "FLAMES"
+            if remove==0:
+                remove=len(word)
+        word.remove(word[remove-1])                 #Remove letter that the count falls on
+        word=word[remove-1:]+word[:remove-1]
+print(word[0])                                      #Print remaining letter
